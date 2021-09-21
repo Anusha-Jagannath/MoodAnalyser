@@ -18,22 +18,32 @@ public class MoodAnalyser {
 		this.message = message;
 	}
 
+	/**
+	 * method to analyze mood
+	 * 
+	 * @param string which contains happy or sad message
+	 * @return HAPPY or SAD
+	 */
 	public String analyseMood(String string) {
-
-		if (string.equals("This is a sad message"))
-			return "SAD";
-		else
+		try {
+			if (string.equals("This is a sad message"))
+				return "SAD";
+			else
+				return "HAPPY";
+		} catch (NullPointerException e) {
 			return "HAPPY";
-
+		}
 	}
 
+	/**
+	 * method to analyze the mood
+	 * 
+	 * @return HAPPY or SAD
+	 */
 	public String analyseMood() {
-
 		if (this.message.equals("This is a sad message"))
 			return "SAD";
 		else
 			return "HAPPY";
-
 	}
-
 }
