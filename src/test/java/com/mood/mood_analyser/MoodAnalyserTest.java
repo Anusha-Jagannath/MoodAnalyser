@@ -20,7 +20,7 @@ public class MoodAnalyserTest {
 		String mood = moodAnalyser.analyseMood("This is a happy message");
 		assertThat(" ", mood, CoreMatchers.is("HAPPY"));
 	}
-	
+
 	@Test
 	public void whenGivenInput_AsSad_UsingConstructor_ShouldReturnSad() {
 		MoodAnalyser moodAnalyser = new MoodAnalyser("This is a sad message");
@@ -32,6 +32,13 @@ public class MoodAnalyserTest {
 	public void whenGivenInput_AsHappy_UsingConstructor_ShouldReturnHappy() {
 		MoodAnalyser moodAnalyser = new MoodAnalyser("This is a happy message");
 		String mood = moodAnalyser.analyseMood();
+		assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+	}
+
+	@Test
+	public void whenGivenInput_AsNull_ShouldReturnHappy() {
+		MoodAnalyser moodAnalyser = new MoodAnalyser();
+		String mood = moodAnalyser.analyseMood(null);
 		assertThat(" ", mood, CoreMatchers.is("HAPPY"));
 	}
 
