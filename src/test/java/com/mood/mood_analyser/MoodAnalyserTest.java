@@ -4,21 +4,35 @@ import static org.junit.Assert.assertThat;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class MoodAnalyserTest {
 
 	@Test
 	public void whenGivenInput_AsSad_ShouldReturnSad() {
 		MoodAnalyser moodAnalyser = new MoodAnalyser();
-		String mood = moodAnalyser.analyseMood("This is a sad message");
-		assertThat(" ", mood, CoreMatchers.is("SAD"));
+		String mood;
+		try {
+			mood = moodAnalyser.analyseMood("This is a sad message");
+			assertThat(" ", mood, CoreMatchers.is("SAD"));
+		} catch (MoodAnalysisException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@Test
 	public void whenGivenInput_AsHappy_ShouldReturnHappy() {
 		MoodAnalyser moodAnalyser = new MoodAnalyser();
-		String mood = moodAnalyser.analyseMood("This is a happy message");
-		assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+		String mood;
+		try {
+			mood = moodAnalyser.analyseMood("This is a happy message");
+			assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+		} catch (MoodAnalysisException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	@Test
@@ -38,8 +52,14 @@ public class MoodAnalyserTest {
 	@Test
 	public void whenGivenInput_AsNull_ShouldReturnHappy() {
 		MoodAnalyser moodAnalyser = new MoodAnalyser();
-		String mood = moodAnalyser.analyseMood(null);
-		assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+		String mood;
+		try {
+			mood = moodAnalyser.analyseMood(null);
+			assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+		} catch (MoodAnalysisException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
