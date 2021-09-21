@@ -59,6 +59,18 @@ public class MoodAnalyserTest {
 		} catch (MoodAnalysisException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void whenGivenInput_AsEmpty_ShouldReturnHappy() {
+		MoodAnalyser moodAnalyser = new MoodAnalyser();
+		String mood;
+		try {
+			mood = moodAnalyser.analyseMood(" ");
+			assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+		} catch (MoodAnalysisException e) {
+			e.printStackTrace();
+		}
 
 	}
 
