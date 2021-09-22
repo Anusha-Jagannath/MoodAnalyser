@@ -6,6 +6,8 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import junit.framework.Assert;
+
 public class MoodAnalyserTest {
 
 	@Test
@@ -52,11 +54,10 @@ public class MoodAnalyserTest {
 	@Test
 	public void whenGivenInput_AsNull_ShouldReturnHappy() {
 		MoodAnalyser moodAnalyser = new MoodAnalyser();
-		String mood;
 		try {
-			mood = moodAnalyser.analyseMood(null);
-			assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+			moodAnalyser.analyseMood(null);
 		} catch (MoodAnalysisException e) {
+			Assert.assertEquals("Please enter valid mood", e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -64,14 +65,12 @@ public class MoodAnalyserTest {
 	@Test
 	public void whenGivenInput_AsEmpty_ShouldReturnHappy() {
 		MoodAnalyser moodAnalyser = new MoodAnalyser();
-		String mood;
 		try {
-			mood = moodAnalyser.analyseMood(" ");
-			assertThat(" ", mood, CoreMatchers.is("HAPPY"));
+			moodAnalyser.analyseMood(" ");
 		} catch (MoodAnalysisException e) {
+			Assert.assertEquals("Please enter valid mood", e.getMessage());
 			e.printStackTrace();
 		}
-
 	}
 
 }
